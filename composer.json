@@ -1,0 +1,50 @@
+{
+    "name": "survos/civicrm-bundle",
+    "description": "CiviCRM APIv4 for Symfony: async mail, exports and background work on Messenger instead of at the end of a request.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": ["civicrm", "symfony", "messenger", "crm", "apiv4"],
+    "authors": [
+        {
+            "name": "Tac Tacelosky",
+            "email": "tacman@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.5",
+        "survos/civicrm-php": "^2.24",
+        "survos/kit-bundle": "^2.6",
+        "symfony/config": "^8.1",
+        "symfony/console": "^8.1",
+        "symfony/dependency-injection": "^8.1",
+        "symfony/framework-bundle": "^8.1",
+        "symfony/http-client": "^8.1",
+        "symfony/http-kernel": "^8.1",
+        "symfony/messenger": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.0",
+        "symfony/mailer": "^8.1"
+    },
+    "suggest": {
+        "symfony/mailer": "Required by the mail handlers; without it they are removed from the container.",
+        "survos/fetch-bundle": "Bounded concurrency for large APIv4 exports."
+    },
+    "autoload": {
+        "psr-4": {
+            "Survos\\CivicrmBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Survos\\CivicrmBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "symfony": {
+            "require": "^8.0"
+        }
+    },
+    "config": { "sort-packages": true },
+    "minimum-stability": "stable"
+}
