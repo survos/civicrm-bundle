@@ -10,14 +10,14 @@ use Survos\CivicrmBundle\DependencyInjection\Compiler\RemoveMailHandlersPass;
 use Survos\CivicrmBundle\MessageHandler\ExportReadyHandler;
 use Survos\CivicrmBundle\MessageHandler\ExportRequestedHandler;
 use Survos\CivicrmBundle\MessageHandler\SendCiviEmailHandler;
+use Survos\Kit\AbstractSurvosBundle;
+use Survos\Kit\SurvosKitBundle;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Kernel\RequiredBundle;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Reference;
-use Survos\Kit\AbstractSurvosBundle;
-use Survos\Kit\SurvosKitBundle;
 
 #[RequiredBundle(SurvosKitBundle::class)]
 // Symfony\Component\HttpKernel\Bundle\Bundle <-- Flex auto-registration marker (see Survos\Kit\AbstractSurvosBundle)

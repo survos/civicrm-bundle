@@ -20,13 +20,13 @@ final class ExportRequestedHandlerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->dir = sys_get_temp_dir() . '/civi-export-test-' . bin2hex(random_bytes(6));
+        $this->dir = sys_get_temp_dir().'/civi-export-test-'.bin2hex(random_bytes(6));
     }
 
     protected function tearDown(): void
     {
         if (is_dir($this->dir)) {
-            array_map(unlink(...), glob($this->dir . '/*') ?: []);
+            array_map(unlink(...), glob($this->dir.'/*') ?: []);
             rmdir($this->dir);
         }
     }
@@ -56,7 +56,7 @@ final class ExportRequestedHandlerTest extends TestCase
         self::assertSame('Contact', $ready->entity);
         self::assertStringStartsWith('/exports/contact-', $ready->downloadUrl);
 
-        $zipPath = $this->dir . '/' . basename($ready->downloadUrl);
+        $zipPath = $this->dir.'/'.basename($ready->downloadUrl);
         self::assertFileExists($zipPath, 'The link must point at a file that exists.');
 
         $zip = new \ZipArchive();
@@ -69,7 +69,7 @@ final class ExportRequestedHandlerTest extends TestCase
         self::assertStringContainsString('Ada Lovelace', $csv);
         self::assertStringContainsString('Grace Hopper', $csv);
 
-        self::assertSame([], glob($this->dir . '/*.csv'), 'The loose CSV is cleaned up after zipping.');
+        self::assertSame([], glob($this->dir.'/*.csv'), 'The loose CSV is cleaned up after zipping.');
     }
 
     public function testJoinedFieldsAreFlattenedRatherThanBreakingTheCsv(): void
@@ -91,7 +91,7 @@ final class ExportRequestedHandlerTest extends TestCase
         $handler(new ExportRequested('Contact', [], 'coordinator@example.org'));
 
         $zip = new \ZipArchive();
-        $zip->open($this->dir . '/' . basename($dispatched[0]->downloadUrl));
+        $zip->open($this->dir.'/'.basename($dispatched[0]->downloadUrl));
         $csv = $zip->getFromIndex(0);
         $zip->close();
 

@@ -45,8 +45,8 @@ final readonly class ExportRequestedHandler
         }
 
         $stem = sprintf('%s-%s', strtolower($message->entity), bin2hex(random_bytes(8)));
-        $csvPath = $this->exportDir . '/' . $stem . '.csv';
-        $zipPath = $this->exportDir . '/' . $stem . '.zip';
+        $csvPath = $this->exportDir.'/'.$stem.'.csv';
+        $zipPath = $this->exportDir.'/'.$stem.'.zip';
 
         $handle = fopen($csvPath, 'w');
         if (false === $handle) {
@@ -95,7 +95,7 @@ final readonly class ExportRequestedHandler
         // Announcing it is a separate message with its own retries: a transient SMTP failure
         // must not rebuild the export, and a failed export must not send a link to nothing.
         $this->bus->dispatch(new ExportReady(
-            downloadUrl: rtrim($this->downloadBaseUrl, '/') . '/' . basename($zipPath),
+            downloadUrl: rtrim($this->downloadBaseUrl, '/').'/'.basename($zipPath),
             notifyEmail: $message->notifyEmail,
             rowCount: $rows,
             entity: $message->entity,

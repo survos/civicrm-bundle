@@ -6,8 +6,8 @@ namespace Survos\CivicrmBundle\Command;
 
 use Survos\Civicrm\Contract\CiviCrmClientInterface;
 use Survos\CivicrmBundle\Message\ExportRequested;
-use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Attribute\Argument;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Attribute\Option;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Messenger\MessageBusInterface;

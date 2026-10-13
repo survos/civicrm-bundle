@@ -6,8 +6,8 @@ namespace Survos\CivicrmBundle\Tests\Functional;
 
 use PHPUnit\Framework\TestCase;
 use Survos\Civicrm\Client\CiviCrmClient;
-use Survos\CivicrmBundle\Command\CiviCrmCommands;
 use Survos\Civicrm\Contract\CiviCrmClientInterface;
+use Survos\CivicrmBundle\Command\CiviCrmCommands;
 use Survos\CivicrmBundle\MessageHandler\ExportReadyHandler;
 use Survos\CivicrmBundle\MessageHandler\ExportRequestedHandler;
 use Survos\CivicrmBundle\MessageHandler\SendCiviEmailHandler;
@@ -76,11 +76,7 @@ final class BundleBootTest extends TestCase
     /** @param array<string,mixed>|null $config */
     private function boot(?array $config = null, bool $mailer = false): Kernel
     {
-        $kernel = new class($config ?? [
-            'base_url' => 'https://rah.example.org',
-            'api_key' => 'test-key',
-            'from_address' => 'no-reply@example.org',
-        ], $mailer) extends Kernel {
+        $kernel = new class($config ?? ['base_url' => 'https://rah.example.org', 'api_key' => 'test-key', 'from_address' => 'no-reply@example.org'], $mailer) extends Kernel {
             /** @param array<string,mixed> $civiConfig */
             public function __construct(private readonly array $civiConfig, private readonly bool $withMailer)
             {
@@ -113,12 +109,12 @@ final class BundleBootTest extends TestCase
 
             public function getCacheDir(): string
             {
-                return sys_get_temp_dir() . '/civi-bundle-test/' . spl_object_hash($this) . '/cache';
+                return sys_get_temp_dir().'/civi-bundle-test/'.spl_object_hash($this).'/cache';
             }
 
             public function getLogDir(): string
             {
-                return sys_get_temp_dir() . '/civi-bundle-test/' . spl_object_hash($this) . '/log';
+                return sys_get_temp_dir().'/civi-bundle-test/'.spl_object_hash($this).'/log';
             }
         };
 
